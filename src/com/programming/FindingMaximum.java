@@ -1,71 +1,38 @@
 package com.programming;
 
-public class FindingMaximum {
+import java.util.Arrays;
 
-    /*
-     * Method to compare three integer values and get the maximum value.
-     *
-     * @param a1: first value to compare.
-     *
-     * @param a2: second value to compare.
-     *
-     * @param a3: third value to compare.
-     */
-    public static Integer maxOfInteger(Integer a1, Integer a2, Integer a3) {
-        Integer max = a1;
-        if (a2.compareTo(max) > 0)
-            max = a2;
-        if (a3.compareTo(max) > 0)
-            max = a3;
-        return max;
-    }
-    /*
-     * Method to compare three float values and get the maximum value.
-     *
-     * @param a1: first value to compare.
-     *
-     * @param a2: second value to compare.
-     *
-     * @param a3: third value to compare.
-     */
+public class FindingMaximum<T> {
 
-    public static Float maxOfFloat(Float a1, Float a2, Float a3) {
-        Float max = a1;
-        if (a2.compareTo(max) > 0)
-            max = a2;
-        if (a3.compareTo(max) > 0)
-            max = a3;
-        return max;
-    }
-    /*
-     * Method to compare three String values and get the maximum value.
-     *
-     * @param a1: first value to compare.
-     *
-     * @param a2: second value to compare.
-     *
-     * @param a3: third value to compare.
-     */
+    T[] elements;
 
-    public static String maxOfString(String a1, String a2, String a3) {
-        String max = a1;
-        if (a2.compareTo(max) > 0)
-            max = a2;
-        if (a3.compareTo(max) > 0)
-            max = a3;
-        return max;
+    public FindingMaximum(T[] elements) {
+        this.elements = elements;
     }
 
+    /*
+     * Generic method to store values in array and return maximum value.
+     *
+     * @param elements.
+     *
+     */
+    public static <T> T maxOFValues(T[] elements) {
+        Arrays.sort(elements);
+        int length = elements.length;
+        T max = elements[length - 1];
+        return max;
+    }
 
     public static void main(String[] args) {
-        Integer a1 = 10, a2 = 8, a3 = 9;
-        System.out.println("Maximum value is : " + maxOfInteger(a1, a2, a3));
 
-        Float b1 = 10.8f, b2 = 12.9f, b3 = 9.9f;
-        System.out.println("Maximum value is : " + maxOfFloat(b1, b2, b3));
+        Integer[] intMax = {1, 82, 5, 80, 4, 87, 100, 58};
+        System.out.println("Maximum value is: " + maxOFValues(intMax));
 
-        String c1 = "S", c2 = "A", c3 = "M";
-        System.out.println("Maximum value is : " + maxOfString(c1, c2, c3));
+        Float[] floatMax = {1.6f, 87.8f, 82.8f, 80.2f, 4.8f};
+        System.out.println("Maximum value is: " + maxOFValues(floatMax));
+
+        String[] stringMax = {"S", "A", "M", "B", "M"};
+        System.out.println("Maximum value is: " + maxOFValues(stringMax));
 
     }
 
